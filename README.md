@@ -71,6 +71,18 @@ sudo rm /usr/local/bin/CassetteDiscordRPC
 rm -rf ~/.config/cassette-discord-rpc
 ```
 
+## Documentation
+
+Design decisions and notes on how this daemon fits the wider ecosystem live in the
+**[CassetteLab knowledge vault](https://github.com/CassetteLab/vault)** — an Obsidian
+vault versioned with Git.
+
+Anything that explains **why** a choice was made lives there rather than in this repo.
+
+> The vault is private to the organisation — open an issue if you need access.
+
+---
+
 ## License
 
 MIT
