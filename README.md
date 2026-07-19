@@ -1,11 +1,11 @@
 # cassette-discord-rpc
 
-A standalone macOS daemon that reads what [Cassette](https://github.com/MathieuDubart/Cassette) is playing and displays it in Discord via Rich Presence.
+A standalone macOS daemon that reads what [Cassette](https://github.com/CassetteLab/cassette) is playing and displays it in Discord via Rich Presence.
 
 ## Requirements
 
 - macOS 13+
-- [Cassette](https://github.com/MathieuDubart/Cassette)
+- [Cassette](https://github.com/CassetteLab/cassette)
 - Discord or Vesktop running in the background
 
 ## How it works
@@ -74,7 +74,7 @@ rm -rf ~/.config/cassette-discord-rpc
 ## Documentation
 
 Design decisions and notes on how this daemon fits the wider ecosystem live in the
-**[CassetteLab knowledge vault](https://github.com/CassetteLab/vault)** — an Obsidian
+**[CassetteLab knowledge vault](https://github.com/CassetteLab/obsidian)** — an Obsidian
 vault versioned with Git.
 
 Anything that explains **why** a choice was made lives there rather than in this repo.
