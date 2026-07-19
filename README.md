@@ -21,7 +21,7 @@ Go to [discord.com/developers/applications](https://discord.com/developers/appli
 ### 2. Build
 
 ```sh
-git clone https://github.com/MathieuDubart/cassette-discord-rpc.git
+git clone https://github.com/CassetteLab/cassette-discord-rpc.git
 cd cassette-discord-rpc
 swift build -c release
 cp .build/release/CassetteDiscordRPC /usr/local/bin/

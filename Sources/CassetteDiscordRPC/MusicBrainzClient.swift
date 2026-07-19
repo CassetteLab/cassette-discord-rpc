@@ -8,7 +8,7 @@ private let logger = Logger(
 
 actor MusicBrainzClient {
 
-    private static let userAgent = "cassette-discord-rpc/1.0 (https://github.com/MathieuDubart/cassette-discord-rpc)"
+    private static let userAgent = "cassette-discord-rpc/1.0 (https://github.com/CassetteLab/cassette-discord-rpc)"
     private static let rateLimitNanoseconds: UInt64 = 1_000_000_000
 
     private var cache: [String: String?] = [:]
