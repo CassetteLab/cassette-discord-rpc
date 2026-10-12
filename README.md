@@ -24,8 +24,11 @@ Go to [discord.com/developers/applications](https://discord.com/developers/appli
 git clone https://github.com/CassetteLab/cassette-discord-rpc.git
 cd cassette-discord-rpc
 swift build -c release
-cp .build/release/CassetteDiscordRPC /usr/local/bin/
+sudo install -d /usr/local/bin
+sudo install -m 755 .build/release/CassetteDiscordRPC /usr/local/bin/
 ```
+
+> `install -m 755` sets the executable bit explicitly. A plain `cp` can leave the binary non-executable (e.g. after copying through Finder or from a downloaded archive), and the shell then reports `command not found`.
 
 ### 3. Create the config file
 
@@ -60,6 +63,34 @@ launchctl load ~/Library/LaunchAgents/fr.mathieu-dubart.cassette-discord-rpc.pli
 
 ```sh
 CassetteDiscordRPC
+```
+
+## Troubleshooting
+
+**`command not found: CassetteDiscordRPC`**: check that the binary exists and is executable:
+
+```sh
+ls -la /usr/local/bin/CassetteDiscordRPC   # must show -rwxr-xr-x
+sudo chmod 755 /usr/local/bin/CassetteDiscordRPC
+```
+
+If Gatekeeper blocks it, remove the quarantine attribute:
+
+```sh
+sudo xattr -d com.apple.quarantine /usr/local/bin/CassetteDiscordRPC
+```
+
+**`address already in use`**: the launch agent is probably already running the daemon. Don't start it manually on top of it:
+
+```sh
+launchctl list | grep cassette
+lsof -i :47832
+```
+
+**Nothing shows up in Discord**: make sure Discord (or Vesktop) is running and its IPC socket exists (`ls $TMPDIR | grep discord-ipc`), then check the logs of the launch agent:
+
+```sh
+cat /tmp/cassette-discord-rpc.log /tmp/cassette-discord-rpc.err
 ```
 
 ## Uninstall
