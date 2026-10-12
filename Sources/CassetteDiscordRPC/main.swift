@@ -1,16 +1,12 @@
 import Foundation
-import os
 
-private let logger = Logger(
-    subsystem: "fr.mathieu-dubart.cassette-discord-rpc",
-    category: "Main"
-)
+// A write to a socket whose peer just went away must never kill the daemon.
+signal(SIGPIPE, SIG_IGN)
 
 do {
     let config = try loadConfiguration()
     let daemon = Daemon(config: config)
     await daemon.run()
 } catch {
-    logger.error("Startup failed: \(error.localizedDescription, privacy: .public)")
-    exit(1)
+    exitWithFatalError("Startup failed: \(error.localizedDescription)")
 }
